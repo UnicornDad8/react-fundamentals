@@ -1,0 +1,73 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 20px 10px;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 300px;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+.form-label > * {
+  align-self: flex-start;
+}
+.form-control {
+  -webkit-appearence: none;
+
+  width: 100%;
+  /*   max-width: 425px; */
+
+  /*Fix for Safari/ios date fields*/
+  min-height: calc(0.9em + (0.8em * 2) + 0.6em);
+  padding: 0.8em;
+  font-size: 0.9em;
+  font-family: inherit;
+
+  outline: none;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background: #f9f9f9;
+  /*   transition: outline 0.15s, ease-in-out 0.15s, box-shadow 0.15s; */
+  transition: outline 0.15s;
+}
+
+.form-control:focus {
+  outline: 4px solid var(--text-main-color);
+}
+.form-control::placeholder {
+  color: #bbbbbb;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 200px;
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.btn-primary {
+  color: #fff;
+  background: var(--bg-main-color);
+  box-shadow: rgba(65, 136, 255, 1) 0px 1px 4px;
+  margin: 20px auto;
+}

@@ -1,0 +1,43 @@
+.btn {
+  border: none;
+  width: 180px;
+  border-radius: 6px;
+  font-size: 20px;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.btn-primary {
+  color: #fff;
+  background: var(--bg-main-color);
+  box-shadow: rgba(65, 136, 255, 1) 0px 1px 4px;
+}
+
+.btn-secondary {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 4px;
+}
+
+.btn-danger {
+  color: #fff;
+  background: var(--bg-danger-color);
+  box-shadow: rgba(237, 52, 25, 1) 0px 1px 4px;
+}
+
+.btn-success {
+  color: #fff;
+  background: var(--bg-success-color);
+  box-shadow: rgba(87, 203, 77, 1) 0px 1px 4px;
+}
+
+.btn-warning {
+  color: rgba(0, 0, 0, 0.7);
+  background: var(--bg-warning-color);
+  box-shadow: rgba(254, 201, 1, 1) 0px 1px 4px;
+}

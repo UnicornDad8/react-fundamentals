@@ -1,0 +1,30 @@
+.list-container {
+  width: 300px;
+  padding: 10px;
+  height: 100vh;
+  background: #f1f1f1;
+}
+
+.list-group {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.list-item {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  font-family: inherit;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.active {
+  background: var(--bg-main-color);
+  color: rgba(255, 255, 255, 0.8);
+}

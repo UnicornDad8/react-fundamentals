@@ -1,0 +1,30 @@
+.alert {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: relative;
+}
+
+.alert button {
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  font-size: 20px;
+  background: transparent;
+  color: inherit;
+  border: none;
+}
+
+.alert-primary {
+  color: var(--text-main-color);
+  background: var(--bg-main-color-ligth);
+}
+
+.alert span {
+  font-weight: 900;
+  margin: 0 20px;
+  font-weight: 22px;
+}
