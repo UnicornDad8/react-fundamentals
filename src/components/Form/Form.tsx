@@ -1,16 +1,11 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useState } from "react";
 import style from "./Form.module.css";
 
 const Form = () => {
-  const nameRef = useRef<HTMLInputElement>(null);
-  const ageRef = useRef<HTMLInputElement>(null);
-  const person = { name: "", age: 0 };
+  const [person, setPerson] = useState({ name: "", age: "" });
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    if (nameRef.current !== null) person.name = nameRef.current.value;
-    if (ageRef.current !== null) person.age = parseInt(ageRef.current.value);
-
     console.log(person);
   };
 
@@ -21,7 +16,10 @@ const Form = () => {
           Name
         </label>
         <input
-          ref={nameRef}
+          onChange={(event) =>
+            setPerson({ ...person, name: event.target.value })
+          }
+          value={person.name}
           type="text"
           className={style["form-control"]}
           id="name"
@@ -32,7 +30,10 @@ const Form = () => {
           Age
         </label>
         <input
-          ref={ageRef}
+          onChange={(event) =>
+            setPerson({ ...person, age: parseInt(event.target.value) })
+          }
+          value={person.age}
           type="number"
           className={style["form-control"]}
           id="age"
