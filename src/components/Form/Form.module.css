@@ -4,10 +4,10 @@
   justify-content: center;
   align-items: center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  padding: 20px 10px;
+  padding: 20px 20px;
   margin: 0 auto;
   margin-top: 30px;
-  width: 300px;
+  width: 540px;
 }
 
 .form-label {
@@ -23,7 +23,7 @@
 .form-control {
   -webkit-appearence: none;
 
-  width: 100%;
+  width: 500px;
   /*   max-width: 425px; */
 
   /*Fix for Safari/ios date fields*/
@@ -70,4 +70,10 @@ textarea.form-control {
   background: var(--bg-main-color);
   box-shadow: rgba(65, 136, 255, 1) 0px 1px 4px;
   margin: 20px auto;
+}
+
+.text-error {
+  margin: 5px 0;
+  margin-bottom: 10px;
+  color: var(--text-danger-color);
 }
