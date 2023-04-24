@@ -1,25 +1,20 @@
 import { FormEvent, useState } from "react";
+import { useForm, FieldValues } from "react-hook-form";
 import style from "./Form.module.css";
 
 const Form = () => {
-  const [person, setPerson] = useState({ name: "", age: "" });
+  const { register, handleSubmit } = useForm();
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    console.log(person);
-  };
+  const onSubmit = (data: FieldValues) => console.log(data);
 
   return (
-    <form className={style["form"]} onSubmit={handleSubmit}>
+    <form className={style["form"]} onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label htmlFor="name" className={style["form-label"]}>
           Name
         </label>
         <input
-          onChange={(event) =>
-            setPerson({ ...person, name: event.target.value })
-          }
-          value={person.name}
+          {...register("name")}
           type="text"
           className={style["form-control"]}
           id="name"
@@ -30,10 +25,7 @@ const Form = () => {
           Age
         </label>
         <input
-          onChange={(event) =>
-            setPerson({ ...person, age: parseInt(event.target.value) })
-          }
-          value={person.age}
+          {...register("age")}
           type="number"
           className={style["form-control"]}
           id="age"
