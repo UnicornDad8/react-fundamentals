@@ -72,6 +72,10 @@ textarea.form-control {
   margin: 20px auto;
 }
 
+.btn-disabled {
+  opacity: 0.6;
+}
+
 .text-error {
   margin: 5px 0;
   margin-bottom: 10px;
