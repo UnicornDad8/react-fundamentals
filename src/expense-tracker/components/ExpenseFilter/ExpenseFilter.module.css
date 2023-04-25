@@ -24,14 +24,6 @@
   transition: outline 0.15s;
 }
 
-select.event-type-select {
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-}
-
-select.event-type-select:hover {
-  box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.3);
-}
-
 select.event-type-select:focus {
   outline: 4px solid var(--text-main-color);
 }
