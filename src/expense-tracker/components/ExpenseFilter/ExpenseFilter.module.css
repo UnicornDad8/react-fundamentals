@@ -1,0 +1,66 @@
+.event-type-select {
+  border: none;
+  -webkit-appearence: none;
+  /*   max-width: 425px; */
+
+  /*Fix for Safari/ios date fields*/
+  padding: 0.8em;
+  font-size: 0.9em;
+  font-family: inherit;
+
+  outline: none;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background: #f9f9f9;
+  /*   transition: outline 0.15s, ease-in-out 0.15s, box-shadow 0.15s; */
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 30px;
+  /*background: #fff url("img/icon-select.png") no-repeat 90% 50%;*/
+  /*box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);*/
+  transition: outline 0.15s;
+}
+
+select.event-type-select {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+select.event-type-select:hover {
+  box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.3);
+}
+
+select.event-type-select:focus {
+  outline: 4px solid var(--text-main-color);
+}
+
+.event-type-select select {
+  -webkit-appearence: none;
+
+  width: 500px;
+  /*   max-width: 425px; */
+  background-image: none;
+  /*Fix for Safari/ios date fields*/
+  min-height: calc(0.9em + (0.8em * 2) + 0.6em);
+  padding: 0.8em;
+  font-size: 0.9em;
+  font-family: inherit;
+
+  outline: none;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background: #f9f9f9;
+  /*   transition: outline 0.15s, ease-in-out 0.15s, box-shadow 0.15s; */
+  transition: outline 0.15s;
+}
+
+.margin-vertical {
+  width: 90%;
+  display: flex;
+  margin: 30px aouto;
+  justify-content: center;
+  align-items: center;
+  background: blue;
+}
