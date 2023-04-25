@@ -1,4 +1,4 @@
-import { categories } from "../../../App";
+import categories from "../../categories";
 import style from "./ExpenseFilter.module.css";
 
 interface ExpenseFilterProp {
