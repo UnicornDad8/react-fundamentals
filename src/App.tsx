@@ -7,10 +7,10 @@ import categories from "./expense-tracker/categories";
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [expenses, setExpenses] = useState([
-    { id: 1, description: "aaa", amount: 10, category: "Utilities" },
-    { id: 2, description: "bbb", amount: 10, category: "Utilities" },
-    { id: 3, description: "ccc", amount: 10, category: "Utilities" },
-    { id: 4, description: "ddd", amount: 10, category: "Utilities" },
+    { id: 1, description: "Apple", amount: 7, category: "Groceries" },
+    { id: 2, description: "Chair", amount: 30, category: "Utilities" },
+    { id: 3, description: "Movies", amount: 20, category: "Entertainment" },
+    { id: 4, description: "Cheese", amount: 10, category: "Groceries" },
   ]);
 
   const visibleExpenses = selectedCategory
@@ -20,7 +20,11 @@ function App() {
   return (
     <div>
       <div style={{ marginBottom: 50 }}>
-        <ExpenseForm />
+        <ExpenseForm
+          onSubmit={(expense) =>
+            setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
+          }
+        />
       </div>
       <ExpenseFilter
         onSelectCategory={(category) => setSelectedCategory(category)}
