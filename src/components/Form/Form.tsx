@@ -1,19 +1,24 @@
 import { FormEvent, useState } from "react";
 import { useForm, FieldValues } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import style from "./Form.module.css";
 
-interface FormData {
-  name: string;
-  age: number;
-}
+const schema = z.object({
+  name: z.string().min(3, { message: "Name must be at least 3 characters" }),
+  age: z
+    .number({ invalid_type_error: "Age field is required" })
+    .min(18, { message: "Age must be at least 18" }),
+});
+
+type FormData = z.infer<typeof schema>;
 
 const Form = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
-  console.log(errors);
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => console.log(data);
 
@@ -24,18 +29,13 @@ const Form = () => {
           Name
         </label>
         <input
-          {...register("name", { required: true, minLength: 3 })}
+          {...register("name")}
           type="text"
           className={style["form-control"]}
           id="name"
         />
-        {errors.name?.type === "required" && (
-          <p className={style["text-error"]}>The name field is required</p>
-        )}
-        {errors.name?.type === "minLength" && (
-          <p className={style["text-error"]}>
-            The name must be at least 3 characters
-          </p>
+        {errors.name && (
+          <p className={style["text-error"]}>{errors.name.message}</p>
         )}
       </div>
       <div>
@@ -43,18 +43,13 @@ const Form = () => {
           Age
         </label>
         <input
-          {...register("age", { required: true, minLength: 2 })}
+          {...register("age", { valueAsNumber: true })}
           type="number"
           className={style["form-control"]}
           id="age"
         />
-        {errors.age?.type === "required" && (
-          <p className={style["text-error"]}>The age field is required</p>
-        )}
-        {errors.age?.type === "minLength" && (
-          <p className={style["text-error"]}>
-            The age must be at least 2 digits long
-          </p>
+        {errors.age && (
+          <p className={style["text-error"]}>{errors.age.message}</p>
         )}
       </div>
       <button
