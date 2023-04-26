@@ -57,8 +57,25 @@ function App() {
     setUsers([newUser, ...users]);
 
     axios
-      .post("https://jsonplaceholder.typicode.com/xusers", newUser)
+      .post("https://jsonplaceholder.typicode.com/users", newUser)
       .then(({ data: savedUser }) => setUsers([savedUser, ...users]))
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
+  };
+
+  const updateUser = (user: UserProp) => {
+    const originalUsers = [...users];
+    const updateUser = { ...user, name: user.name + "!!" };
+
+    setUsers(users.map((u) => (u.id === user.id ? updateUser : u)));
+
+    axios
+      .patch(
+        "https://jsonplaceholder.typicode.com/users/" + user.id,
+        updateUser
+      )
       .catch((err) => {
         setError(err.message);
         setUsers(originalUsers);
@@ -73,7 +90,9 @@ function App() {
       <ul>
         {users.map((user) => (
           <li key={user.id}>
-            {user.name} <button onClick={() => deleteUser(user)}>Delete</button>
+            {user.name}
+            <button onClick={() => updateUser(user)}>Update</button>{" "}
+            <button onClick={() => deleteUser(user)}>Delete</button>
           </li>
         ))}
       </ul>
