@@ -39,13 +39,27 @@ function App() {
     fetchUsers();
   }, []);
 
+  const deleteUser = (user: UserProp) => {
+    const originalUsers = [...users];
+    setUsers(users.filter((u) => u.id !== user.id));
+
+    axios
+      .delete("https://jsonplaceholder.typicode.com/xusers/" + user.id)
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
+  };
+
   return (
     <div>
       {error && <p>{error}</p>}
       {isLoading && <div className="spinner-border"></div>}
       <ul>
         {users.map((user) => (
-          <li key={user.id}>{user.name}</li>
+          <li key={user.id}>
+            {user.name} <button onClick={() => deleteUser(user)}>Delete</button>
+          </li>
         ))}
       </ul>
     </div>
