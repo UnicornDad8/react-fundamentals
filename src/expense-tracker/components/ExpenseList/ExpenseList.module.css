@@ -1,3 +1,9 @@
+table {
+  background: #fff;
+  border: none;
+}
+
+/* ---------------------------------------------- */
 .btn {
   border: none;
   width: 180px;
@@ -13,17 +19,16 @@
 }
 
 .btn-outline-danger {
-  color: var(--text-danger-color);
-  background: transparent;
-  border: 2px solid var(--text-danger-ligth);
-  box-shadow: rgba(237, 52, 25, 1) 0px 1px 4px;
+  color: var(--bg-danger-color);
+  background: var(--bg-danger-ligth);
+  border: 3px solid var(--bg-danger-color);
+  transition: all 200ms ease-in-out;
 }
 
 .btn-outline-danger:hover {
   color: #fff;
   background: var(--bg-danger-color);
-  border: 2px solid var(--text-danger-color);
-  box-shadow: rgba(237, 52, 25, 1) 0px 1px 4px;
+  border: 3px solid var(--text-danger-color);
 }
 
 .description-width {

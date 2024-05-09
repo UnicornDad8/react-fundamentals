@@ -1,4 +1,5 @@
 import categories from "../../categories";
+import { IoIosArrowDown } from "react-icons/io";
 import style from "./ExpenseFilter.module.css";
 
 interface ExpenseFilterProp {
@@ -7,19 +8,22 @@ interface ExpenseFilterProp {
 
 const ExpenseFilter = ({ onSelectCategory }: ExpenseFilterProp) => {
   return (
-    <div className="margin-vertical">
+    <div className={style["select-box"]}>
       <select
         id={style["parent_selector"]}
         className={style["event-type-select"]}
         onChange={(event) => onSelectCategory(event.target.value)}
       >
-        <option value="">All categories</option>
+        <option value="">Categorías</option>
         {categories.map((category) => (
           <option key={category} value={category}>
             {category}
           </option>
         ))}
       </select>
+      <div className={style["arrow-box"]}>
+        <IoIosArrowDown size={28} color="#888" />
+      </div>
     </div>
   );
 };

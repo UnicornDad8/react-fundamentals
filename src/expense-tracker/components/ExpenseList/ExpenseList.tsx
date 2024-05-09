@@ -19,9 +19,9 @@ const ExpenseList = ({ expenses, onDelete }: ExpenseListProps) => {
     <table>
       <thead>
         <tr>
-          <th className={style["description-width"]}>Description</th>
-          <th>Amount</th>
-          <th>Category</th>
+          <th className={style["description-width"]}>Descripción</th>
+          <th>Precio</th>
+          <th>Categoría</th>
           <th></th>
         </tr>
       </thead>

@@ -2,19 +2,20 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import categories from "../../categories";
+import { IoIosArrowDown } from "react-icons/io";
 import style from "./ExpenseForm.module.css";
 
 const schema = z.object({
   description: z
     .string()
-    .min(3, { message: "Description should be at least 3 characters" })
+    .min(3, { message: "La descripción deberia tener al menos tres letras" })
     .max(50),
   amount: z
-    .number({ invalid_type_error: "Amount is required" })
+    .number({ invalid_type_error: "El precio es obligatorio" })
     .min(0.01)
     .max(100_000),
   category: z.enum(categories, {
-    errorMap: () => ({ message: "Category is required" }),
+    errorMap: () => ({ message: "Elige una categoría para el producto" }),
   }),
 });
 
@@ -42,7 +43,7 @@ const ExpenseForm = ({ onSubmit }: ExpenseFormProps) => {
     >
       <div className={style["mb-3"]}>
         <label htmlFor="description" className={style["form-label"]}>
-          Description
+          Descripción
         </label>
         <input
           {...register("description")}
@@ -56,7 +57,7 @@ const ExpenseForm = ({ onSubmit }: ExpenseFormProps) => {
       </div>
       <div className={style["mb-3"]}>
         <label htmlFor="amount" className={style["form-label"]}>
-          Amount
+          Precio
         </label>
         <input
           {...register("amount", { valueAsNumber: true })}
@@ -70,26 +71,31 @@ const ExpenseForm = ({ onSubmit }: ExpenseFormProps) => {
       </div>
       <div className={style["mb-3"]}>
         <label htmlFor="category" className={style["form-label"]}>
-          Category
+          Categoría
         </label>
-        <select
-          {...register("category")}
-          id="category"
-          className={style["category"]}
-        >
-          <option value=""></option>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+        <div className={style["select-box"]}>
+          <select
+            className={style["category"]}
+            {...register("category")}
+            id="category"
+          >
+            <option value=""></option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          <div className={style["arrow-box"]}>
+            <IoIosArrowDown size={28} color="#888" />
+          </div>
+        </div>
         {errors.category && (
           <p className={style["text-error"]}>{errors.category.message}</p>
         )}
       </div>
       <button className={`${style["btn"]} ${style["btn-primary"]}`}>
-        Submit
+        Enviar
       </button>
     </form>
   );

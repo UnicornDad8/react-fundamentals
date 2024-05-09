@@ -1,62 +1,44 @@
-import { useEffect, useState } from "react";
-import { AxiosError, CanceledError } from "./services/api-client";
-import userService, { UserProp } from "./services/user-service";
-import useUsers from "./hooks/useUsers";
-import "./main.css";
+import { useState } from "react";
+import ExpenseList from "./expense-tracker/components/ExpenseList";
+import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
+import ExpenseForm from "./expense-tracker/components/ExpenseForm";
 
 function App() {
-  const { users, error, isLoading, setUsers, setError } = useUsers();
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [expenses, setExpenses] = useState([
+    { id: 1, description: "Manzana", amount: 12, category: "Super-6" },
+    { id: 2, description: "Silla", amount: 30, category: "Utilidades" },
+    { id: 3, description: "Pelicula", amount: 20, category: "Entretenimiento" },
+    { id: 4, description: "Queso", amount: 10, category: "Super-6" },
+  ]);
 
-  const deleteUser = (user: UserProp) => {
-    const originalUsers = [...users];
-    setUsers(users.filter((u) => u.id !== user.id));
-
-    userService.delete(user.id).catch((err) => {
-      setError(err.message);
-      setUsers(originalUsers);
-    });
-  };
-
-  const addUser = () => {
-    const originalUsers = [...users];
-    const newUser = { id: 0, name: "Ceci" };
-    setUsers([newUser, ...users]);
-
-    userService
-      .create(newUser)
-      .then(({ data: savedUser }) => setUsers([savedUser, ...users]))
-      .catch((err) => {
-        setError(err.message);
-        setUsers(originalUsers);
-      });
-  };
-
-  const updateUser = (user: UserProp) => {
-    const originalUsers = [...users];
-    const updatedUser = { ...user, name: user.name + "!!" };
-
-    setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
-
-    userService.update(updatedUser).catch((err) => {
-      setError(err.message);
-      setUsers(originalUsers);
-    });
-  };
+  const visibleExpenses = selectedCategory
+    ? expenses.filter((e) => e.category === selectedCategory)
+    : expenses;
 
   return (
-    <div>
-      {error && <p>{error}</p>}
-      {isLoading && <div className="spinner-border"></div>}
-      <button onClick={addUser}>Add</button>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.name}
-            <button onClick={() => updateUser(user)}>Update</button>{" "}
-            <button onClick={() => deleteUser(user)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+    <div className="main">
+      <div className="main-left">
+        <div className="form">
+          <ExpenseForm
+            onSubmit={(expense) =>
+              setExpenses([
+                ...expenses,
+                { ...expense, id: expenses.length + 1 },
+              ])
+            }
+          />
+        </div>
+      </div>
+      <div className="main-right">
+        <ExpenseFilter
+          onSelectCategory={(category) => setSelectedCategory(category)}
+        />
+        <ExpenseList
+          expenses={visibleExpenses}
+          onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
+        />
+      </div>
     </div>
   );
 }

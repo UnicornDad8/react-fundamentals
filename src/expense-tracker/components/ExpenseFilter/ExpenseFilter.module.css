@@ -1,6 +1,21 @@
+.select-box {
+  position: relative;
+  cursor: pointer;
+}
+
+.arrow-box {
+  position: absolute;
+  top: 50%;
+  right: 45px;
+  pointer-events: none;
+}
+
 .event-type-select {
   border: none;
-  -webkit-appearence: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
   /*   max-width: 425px; */
 
   /*Fix for Safari/ios date fields*/
@@ -11,7 +26,7 @@
   outline: none;
   border: 1px solid #dddddd;
   border-radius: 4px;
-  background: #f9f9f9;
+  background: #fff;
   /*   transition: outline 0.15s, ease-in-out 0.15s, box-shadow 0.15s; */
   width: 90%;
   display: flex;
@@ -46,13 +61,4 @@ select.event-type-select:focus {
   background: #f9f9f9;
   /*   transition: outline 0.15s, ease-in-out 0.15s, box-shadow 0.15s; */
   transition: outline 0.15s;
-}
-
-.margin-vertical {
-  width: 90%;
-  display: flex;
-  margin: 30px aouto;
-  justify-content: center;
-  align-items: center;
-  background: blue;
 }

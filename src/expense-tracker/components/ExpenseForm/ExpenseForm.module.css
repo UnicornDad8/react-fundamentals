@@ -14,13 +14,23 @@
   width: 540px;
 }
 
+.select-box {
+  position: relative;
+  cursor: pointer;
+}
+
+.arrow-box {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-40%);
+  pointer-events: none;
+}
+
 .category {
-  border: none;
-  -webkit-appearence: none;
   /*   max-width: 425px; */
 
   /*Fix for Safari/ios date fields*/
-  padding: 0.8em;
   font-size: 0.9em;
   font-family: inherit;
 
@@ -32,9 +42,9 @@
   width: 500px;
   display: flex;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
   margin: 0 auto;
-  margin-top: 30px;
   /*background: #fff url("img/icon-select.png") no-repeat 90% 50%;*/
   /*box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);*/
   transition: outline 0.15s;
@@ -44,8 +54,11 @@ select.category:focus {
   outline: 4px solid var(--text-main-color);
 }
 
-.category select {
-  -webkit-appearence: none;
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
 
   width: 500px;
   /*   max-width: 425px; */
@@ -57,8 +70,7 @@ select.category:focus {
   font-family: inherit;
 
   outline: none;
-  border: 1px solid #dddddd;
-  border-radius: 4px;
+  border: none;
   background: #f9f9f9;
   /*   transition: outline 0.15s, ease-in-out 0.15s, box-shadow 0.15s; */
   transition: outline 0.15s;
