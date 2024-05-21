@@ -3,5 +3,6 @@ We have here react exercises and basic concepts, also some typescript types and 
 
 # Build with
 - react
+- typescript
 - react-hook-form
 - zod
